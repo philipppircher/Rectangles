@@ -1,0 +1,8 @@
+/.idea
+/lib
+/native
+/out
+/org.newdawn.slick.tests
+/at.ran.test
+/testdata
+/Slick2DTemplate.iml
