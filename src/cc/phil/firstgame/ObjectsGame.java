@@ -2,65 +2,60 @@ package cc.phil.firstgame;
 
 import org.newdawn.slick.*;
 
-public class Rectangles extends BasicGame {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class ObjectsGame extends BasicGame {
     // Membervariables
     //
-    private int width;
-    private int height;
-
-    private float speed;
-
-    private float squareX;
-    private float squareY;
-    private float circleY;
-    private float ovalX;
-
-    private Direction squareDirection;
-    private Direction circleDirection;
-    private Direction ovalDirection;
+    private List<Actor> actors;
 
     // Constructor
     //
-    public Rectangles(String title) {
+    public ObjectsGame(String title) {
         super(title);
     }
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
-        this.speed = 0;
+        this.actors = new ArrayList<>();
 
-        this.squareX = 100.0f;
-        this.squareY = 100.0f;
-        this.squareDirection = Direction.RIGHT;
+        Random random = new Random();
 
-        this.circleY = 100.0f;
-        this.circleDirection = Direction.DOWN;
+        for (int i = 0; i < 10; i++) {
+            Rectangle rectangle = new Rectangle(random.nextInt(600), random.nextInt(600),
+                    random.nextInt(50), DirectionHorizontal.LEFT);
+            actors.add(rectangle);
+        }
 
-        this.ovalX = 100.0f;
-        this.ovalDirection = Direction.RIGHT;
+        for (int i = 0; i < 10; i++) {
+            Circle circle = new Circle();
+            actors.add(circle);
+        }
 
-        this.width = 800;
-        this.height = 600;
+        for (int i = 0; i < 10; i++) {
+            Ellipse ellipse = new Ellipse(random.nextInt(800), random.nextInt(600));
+            actors.add(ellipse);
+        }
     }
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
-        this.speed = (float) delta / 2.5f;
-
-        movingSquare();
-        movingVerticalCicle();
-        movingHorizontalOval();
+        for (Actor actor: this.actors){
+            actor.update(delta);
+        }
     }
 
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-        graphics.drawRect(squareX, squareY, 100, 100);
-        graphics.drawRoundRect(50, circleY, 80, 80, 100);
-        graphics.drawOval(ovalX, 50, 100, 30);
+        for (Actor actor: this.actors){
+            actor.render(graphics);
+        }
     }
 
-
+/*
     private void movingVerticalCicle() {
         if (circleDirection == Direction.DOWN) {
             if (circleY < height - 200) {
@@ -131,12 +126,13 @@ public class Rectangles extends BasicGame {
             }
         }
     }
+    */
 
     // Main
     //
     public static void main(String[] argv) {
         try {
-            AppGameContainer container = new AppGameContainer(new Rectangles("Rectangles"));
+            AppGameContainer container = new AppGameContainer(new ObjectsGame("Rectangles"));
             container.setDisplayMode(800, 600, false);
             container.start();
         } catch (SlickException e) {
