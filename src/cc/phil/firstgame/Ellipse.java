@@ -25,13 +25,13 @@ public class Ellipse implements Actor {
     @Override
     public void update(int delta) {
         this.y += (float) delta / speed;
-        this.x += (float) delta /speed;
+        this.x += (float) delta / speed;
 
-        if (y > 600){
+        if (y > 600) {
             y = 0;
         }
 
-        if (x > 800){
+        if (x > 800) {
             x = 0;
         }
     }

@@ -42,7 +42,7 @@ public class ObjectsGame extends BasicGame {
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
-        for (Actor actor: this.actors){
+        for (Actor actor : this.actors) {
             actor.update(delta);
         }
     }
@@ -50,84 +50,11 @@ public class ObjectsGame extends BasicGame {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-        for (Actor actor: this.actors){
+        for (Actor actor : this.actors) {
             actor.render(graphics);
         }
     }
-
-/*
-    private void movingVerticalCicle() {
-        if (circleDirection == Direction.DOWN) {
-            if (circleY < height - 200) {
-                circleY += speed;
-            } else {
-                circleDirection = Direction.UP;
-            }
-        }
-
-        if (circleDirection == Direction.UP) {
-            if (circleY > 100) {
-                circleY -= speed;
-            } else {
-                circleDirection = Direction.DOWN;
-            }
-        }
-    }
-
-    private void movingHorizontalOval() {
-        if (ovalDirection == Direction.RIGHT) {
-            if (ovalX < width - 100) {
-                ovalX += speed;
-            } else {
-                ovalDirection = Direction.LEFT;
-            }
-        }
-
-        if (ovalDirection == Direction.LEFT) {
-            if (ovalX > 50) {
-                ovalX -= speed;
-            } else {
-                ovalDirection = Direction.RIGHT;
-            }
-        }
-    }
-
-    private void movingSquare() {
-        // Moves from Left to Right
-        if (squareDirection == Direction.RIGHT) {
-            if (squareX < width - 200) {
-                squareX += speed;
-            } else {
-                squareDirection = Direction.DOWN;
-            }
-        }
-
-        if (squareDirection == Direction.DOWN) {
-            if (squareY < height - 200) {
-                squareY += speed;
-            } else {
-                squareDirection = Direction.LEFT;
-            }
-        }
-
-        if (squareDirection == Direction.LEFT) {
-            if (squareX > 100) {
-                squareX -= speed;
-            } else {
-                squareDirection = Direction.UP;
-            }
-        }
-
-        if (squareDirection == Direction.UP) {
-            if (squareY > 100) {
-                squareY -= speed;
-            } else {
-                squareDirection = Direction.RIGHT;
-            }
-        }
-    }
-    */
-
+    
     // Main
     //
     public static void main(String[] argv) {
