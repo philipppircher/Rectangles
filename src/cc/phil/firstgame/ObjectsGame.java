@@ -10,6 +10,7 @@ public class ObjectsGame extends BasicGame {
     // Membervariables
     //
     private List<Actor> actors;
+    private Rocket rocket;
 
     // Constructor
     //
@@ -38,12 +39,16 @@ public class ObjectsGame extends BasicGame {
             Ellipse ellipse = new Ellipse(random.nextInt(800), random.nextInt(600));
             actors.add(ellipse);
         }
+
+        Rocket rocket = new Rocket();
+        this.rocket = rocket;
+        actors.add(rocket);
     }
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
         for (Actor actor : this.actors) {
-            actor.update(delta);
+            actor.update(gameContainer, delta);
         }
     }
 
@@ -54,7 +59,15 @@ public class ObjectsGame extends BasicGame {
             actor.render(graphics);
         }
     }
-    
+
+    @Override
+    public void keyPressed(int key, char c) {
+        if (key == Input.KEY_SPACE){
+            CannonBall cannonBall = new CannonBall(this.rocket.getX(), this.rocket.getY());
+            this.actors.add((cannonBall));
+        }
+    }
+
     // Main
     //
     public static void main(String[] argv) {

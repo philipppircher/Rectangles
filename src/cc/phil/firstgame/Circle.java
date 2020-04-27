@@ -1,5 +1,6 @@
 package cc.phil.firstgame;
 
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 import java.util.Random;
@@ -25,7 +26,7 @@ public class Circle implements Actor {
         graphics.drawOval(this.x, this.y, this.diameter, this.diameter);
     }
 
-    public void update(int delta) {
+    public void update(GameContainer gameContainer, int delta) {
         this.diameter += (float) delta / 100;
         this.y += (float) delta / speed;
 

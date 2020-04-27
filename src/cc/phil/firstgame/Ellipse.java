@@ -1,5 +1,6 @@
 package cc.phil.firstgame;
 
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 public class Ellipse implements Actor {
@@ -23,7 +24,7 @@ public class Ellipse implements Actor {
     }
 
     @Override
-    public void update(int delta) {
+    public void update(GameContainer gameContainer, int delta) {
         this.y += (float) delta / speed;
         this.x += (float) delta / speed;
 
