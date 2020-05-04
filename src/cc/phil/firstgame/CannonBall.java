@@ -1,5 +1,6 @@
 package cc.phil.firstgame;
 
+import cc.phil.firstgame.actors.Actor;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 

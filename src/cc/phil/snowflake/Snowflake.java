@@ -1,6 +1,6 @@
 package cc.phil.snowflake;
 
-import cc.phil.firstgame.Actor;
+import cc.phil.firstgame.actors.Actor;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 

@@ -1,8 +1,6 @@
 package cc.phil.snowflake;
 
-import cc.phil.firstgame.Actor;
-import cc.phil.firstgame.ObjectsGame;
-import cc.phil.firstgame.Rocket;
+import cc.phil.firstgame.actors.Actor;
 import org.newdawn.slick.*;
 
 import java.util.ArrayList;

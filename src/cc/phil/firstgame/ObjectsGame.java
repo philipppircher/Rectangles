@@ -1,5 +1,9 @@
 package cc.phil.firstgame;
 
+import cc.phil.firstgame.actors.*;
+import cc.phil.firstgame.movement.LeftMoveStrategy;
+import cc.phil.firstgame.movement.MoveStrategy;
+import cc.phil.firstgame.movement.RightMoveStrategy;
 import org.newdawn.slick.*;
 
 import java.util.ArrayList;
@@ -24,25 +28,62 @@ public class ObjectsGame extends BasicGame {
 
         Random random = new Random();
 
-        for (int i = 0; i < 10; i++) {
-            Rectangle rectangle = new Rectangle(random.nextInt(600), random.nextInt(600),
-                    random.nextInt(50), DirectionHorizontal.LEFT);
+        Rocket rocket = new Rocket();
+        this.rocket = rocket;
+        this.actors.add(rocket);
+
+
+
+        // Rectangle leftMoveStrategy
+        for (int i = 0; i < 5; i++) {
+            MoveStrategy moveStrategy =
+                    new LeftMoveStrategy(random.nextInt(600), random.nextInt(600), random.nextInt(50), false);
+
+            Rectangle rectangle = new Rectangle(moveStrategy);
+
             actors.add(rectangle);
+            this.rocket.addCollisionPartner(rectangle);
+        }
+
+        // Rectangle rightMoveStrategy
+        for (int i = 0; i < 5; i++) {
+            MoveStrategy moveStrategy =
+                    new RightMoveStrategy(random.nextInt(600), random.nextInt(600), random.nextInt(50), false);
+
+            Rectangle rectangle = new Rectangle(moveStrategy);
+
+            actors.add(rectangle);
+            this.rocket.addCollisionPartner(rectangle);
         }
 
         for (int i = 0; i < 10; i++) {
             Circle circle = new Circle();
-            actors.add(circle);
+            this.actors.add(circle);
+            this.rocket.addCollisionPartner(circle);
         }
+
+        RightCircle rc1 = new RightCircle();
+        actors.add(rc1);
+
+        LeftCircle lc1 = new LeftCircle();
+        actors.add(lc1);
+
+
 
         for (int i = 0; i < 10; i++) {
-            Ellipse ellipse = new Ellipse(random.nextInt(800), random.nextInt(600));
-            actors.add(ellipse);
+            MoveStrategy moveStrategy =
+                    new RightMoveStrategy(random.nextInt(800), random.nextInt(600), random.nextInt(50), false);
+            Ellipse ellipse = new Ellipse(moveStrategy);
+            this.actors.add(ellipse);
         }
 
-        Rocket rocket = new Rocket();
-        this.rocket = rocket;
-        actors.add(rocket);
+        for (int i = 0; i < 4; i++) {
+            MoveStrategy moveStrategy =
+                    new LeftMoveStrategy(random.nextInt(800), random.nextInt(600), random.nextInt(50), false);
+            RectangleFilled rectangleFilled = new RectangleFilled(moveStrategy);
+            this.actors.add(rectangleFilled);
+        }
+
     }
 
     @Override
@@ -62,7 +103,7 @@ public class ObjectsGame extends BasicGame {
 
     @Override
     public void keyPressed(int key, char c) {
-        if (key == Input.KEY_SPACE){
+        if (key == Input.KEY_SPACE) {
             CannonBall cannonBall = new CannonBall(this.rocket.getX(), this.rocket.getY());
             this.actors.add((cannonBall));
         }
