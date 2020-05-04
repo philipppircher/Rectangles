@@ -22,6 +22,7 @@ public class Ball extends GameObject implements CollisionActor {
     private final static float MAX_BALL_SPEED = 1.5f;
     private ArrayList<CollisionActor> collisionActors;       // Collisionshape partner -> ball
     private boolean isMovingUp;
+    public int scorePlayer, scoreComputer;
 
     public Ball(ArrayList<CollisionActor> collisionActors) {
         this.speed = START_BALL_SPEED;
@@ -33,6 +34,8 @@ public class Ball extends GameObject implements CollisionActor {
         this.collisionActors = collisionActors;
         this.startMoving = false;
         this.isMovingUp = true;
+        this.scoreComputer = 0;
+        this.scorePlayer = 0;
     }
 
     @Override
@@ -81,7 +84,7 @@ public class Ball extends GameObject implements CollisionActor {
         }
     }
 
-    private void ballMoveVertical(int delta){
+    private void ballMoveVertical(int delta) {
         if (isMovingUp) {
             this.y -= (float) delta / this.speed;
         } else {
@@ -89,12 +92,12 @@ public class Ball extends GameObject implements CollisionActor {
         }
     }
 
-    private void ballMoveHorizontal(int delta){
+    private void ballMoveHorizontal(int delta) {
         if (horizontalValue == 0) {                 // move ball right
             this.x += (float) delta / this.speed;
         } else if (horizontalValue == 1) {          // move ball left
             this.x -= (float) delta / this.speed;
-        } else if (horizontalValue == 2){           // move ball straight
+        } else if (horizontalValue == 2) {           // move ball straight
             this.x += 0;
         }
     }
@@ -106,7 +109,13 @@ public class Ball extends GameObject implements CollisionActor {
         }
     }
 
-    private void ballOutsideYBorder(){
+    private void ballOutsideYBorder() {
+        if (this.y < 0) {
+            scorePlayer++;
+        } else if (this.y > 700) {
+            scoreComputer++;
+        }
+
         // Outside upper or lower screen border
         if (this.y < 0 || this.y > 700) {
             this.y = this.Y_CENTER_OF_SCREEN;
@@ -117,7 +126,7 @@ public class Ball extends GameObject implements CollisionActor {
         }
     }
 
-    private void checkBallCollideWithPaddles(){
+    private void checkBallCollideWithPaddles() {
         // Check collision with paddlePlayer and paddleComputer
         for (CollisionActor collisionActor : this.collisionActors) {
             if (this.collisionShape.intersects(collisionActor.getShape())) {
@@ -129,7 +138,7 @@ public class Ball extends GameObject implements CollisionActor {
                     isMovingUp = true;
                 }
 
-                if (horizontalValue == 2){
+                if (horizontalValue == 2) {
                     horizontalValue = random.nextInt(3);
                 }
                 ballSpeedIncrease();    // Increase ball speed, everytime ball collides with a paddle
@@ -137,7 +146,7 @@ public class Ball extends GameObject implements CollisionActor {
         }
     }
 
-    private void ballSpeedIncrease(){
+    private void ballSpeedIncrease() {
         if (this.speed > MAX_BALL_SPEED) {
             this.speed -= 0.15f;
         }
