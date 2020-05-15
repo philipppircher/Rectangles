@@ -49,8 +49,4 @@ public class PaddleComputer extends Paddle {
         return this.collisionShape;
     }
 
-    @Override
-    public String getString() {
-        return getClass().getSimpleName();
-    }
 }

@@ -40,7 +40,7 @@ public class Rocket implements Actor {
     public void update(GameContainer gameContainer, int delta) {
         for (CollisionActor collisionActor : this.collisionActors) {
             if (this.collisionShape.intersects(collisionActor.getShape())) {
-                System.out.println(collisionActor.getString());
+                //System.out.println(collisionActor.getString());
             }
         }
 

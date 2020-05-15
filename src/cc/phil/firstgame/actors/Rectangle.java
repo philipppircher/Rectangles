@@ -14,12 +14,10 @@ public class Rectangle implements CollisionActor {
 
     // Constructor
     //
-
     public Rectangle(MoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;
         this.collisionShape =
                 new org.newdawn.slick.geom.Rectangle(moveStrategy.getX(), moveStrategy.getY(), 10.0f, 10.0f);
-
     }
 
     // Methodes
@@ -40,10 +38,5 @@ public class Rectangle implements CollisionActor {
     @Override
     public Shape getShape() {
         return this.collisionShape;
-    }
-
-    @Override
-    public String getString() {
-        return getClass().getSimpleName() + " collision";
     }
 }

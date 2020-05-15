@@ -17,11 +17,6 @@ public class RectangleFilled extends AbstractMoveableActor {
     }
 
     @Override
-    public String getString() {
-        return getClass().getSimpleName();
-    }
-
-    @Override
     public void render(Graphics graphics) {
         graphics.fillRect(moveStrategy.getX(), moveStrategy.getY(), 20, 20);
     }

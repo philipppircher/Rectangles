@@ -7,17 +7,10 @@ public abstract class GameObject {
     // Membervariables
     //
     public static final float X_CENTER_OF_SCREEN = 300.0f;
+    public static final float Y_CENTER_OF_SCREEN = 400.0f;
     protected float speed;
     protected Shape collisionShape;                   // Collisionshape for paddle and ball
     protected float x, y;
-
-    public GameObject(MoveStrategy moveStrategy) {
-        this.x = X_CENTER_OF_SCREEN;
-    }
-
-    public GameObject() {
-
-    }
 
     @Override
     public String toString() {

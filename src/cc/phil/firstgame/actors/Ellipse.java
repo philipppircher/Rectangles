@@ -25,9 +25,4 @@ public class Ellipse extends AbstractMoveableActor {
     public Shape getShape() {
         return null;
     }
-
-    @Override
-    public String getString() {
-        return null;
-    }
 }

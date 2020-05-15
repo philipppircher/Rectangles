@@ -52,9 +52,4 @@ public class Circle implements CollisionActor {
     public Shape getShape() {
         return this.collisionShape;
     }
-
-    @Override
-    public String getString() {
-        return getClass().getSimpleName() + " collision";
-    }
 }

@@ -1,18 +1,18 @@
 package cc.phil.pong;
 
-import org.newdawn.slick.AngelCodeFont;
 import cc.phil.firstgame.actors.Actor;
 import cc.phil.firstgame.actors.CollisionActor;
 import org.newdawn.slick.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class PongGame extends BasicGame {
 
     // Membervariables
     //
-    private ArrayList<Actor> actors;
+    private List<Actor> actors;
     private AngelCodeFont fontShowScore;
     private AngelCodeFont fontShowWinner;
     private Ball ball;
@@ -49,7 +49,7 @@ public class PongGame extends BasicGame {
     }
 
     @Override
-    public void update(GameContainer gameContainer, int delta) throws SlickException {
+    public void update(GameContainer gameContainer, int delta) {
         for (Actor actor : this.actors) {
             actor.update(gameContainer, delta);
         }
@@ -74,7 +74,7 @@ public class PongGame extends BasicGame {
         printScore = this.ball.scorePlayer + " : " + this.ball.scoreComputer;
         fontShowScore.drawString(725, 10, printScore, Color.magenta);
 
-        if (this.hasWinner){
+        if (this.hasWinner) {
             fontShowWinner.drawString(300, 300, printWinner, Color.magenta);
         }
 

@@ -44,18 +44,12 @@ public class Ball extends GameObject implements CollisionActor {
     }
 
     @Override
-    public String getString() {
-        return null;
-    }
-
-    @Override
     public void render(Graphics graphics) {
         graphics.fillOval(this.x, this.y, this.diameter, this.diameter);
         graphics.setColor(Color.magenta);
         graphics.draw(collisionShape);
         graphics.setColor(Color.white);
     }
-
 
     @Override
     public void update(GameContainer gameContainer, int delta) {
@@ -71,7 +65,7 @@ public class Ball extends GameObject implements CollisionActor {
         }
 
         ballCollideWithBorder();
-        ballOutsideYBorder();
+        ballToBorder();
         checkBallCollideWithPaddles();
     }
 
@@ -109,7 +103,7 @@ public class Ball extends GameObject implements CollisionActor {
         }
     }
 
-    private void ballOutsideYBorder() {
+    private void ballToBorder() {
         if (this.y < 0) {
             scorePlayer++;
         } else if (this.y > 700) {
@@ -147,7 +141,7 @@ public class Ball extends GameObject implements CollisionActor {
     }
 
     private void ballSpeedIncrease() {
-        if (this.speed > MAX_BALL_SPEED) {
+        if (this.speed > this.MAX_BALL_SPEED) {
             this.speed -= 0.15f;
         }
     }

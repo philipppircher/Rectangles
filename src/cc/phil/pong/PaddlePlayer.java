@@ -1,6 +1,5 @@
 package cc.phil.pong;
 
-import cc.phil.firstgame.actors.CollisionActor;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.geom.Shape;
@@ -42,10 +41,5 @@ public class PaddlePlayer extends Paddle {
     @Override
     public Shape getShape() {
         return this.collisionShape;
-    }
-
-    @Override
-    public String getString() {
-        return this.getClass().getSimpleName();
     }
 }

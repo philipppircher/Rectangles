@@ -2,8 +2,6 @@ package cc.phil.firstgame.actors;
 
 import cc.phil.firstgame.movement.MoveStrategy;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.geom.Shape;
 
 public abstract class AbstractMoveableActor implements CollisionActor {
     // Membervariables
