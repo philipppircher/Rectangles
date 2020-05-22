@@ -33,6 +33,7 @@ public class ObjectsGame extends BasicGame {
         this.actors.add(rocket);
 
 
+
         // Rectangle leftMoveStrategy
         for (int i = 0; i < 5; i++) {
             MoveStrategy moveStrategy =
@@ -68,6 +69,7 @@ public class ObjectsGame extends BasicGame {
         actors.add(lc1);
 
 
+
         for (int i = 0; i < 10; i++) {
             MoveStrategy moveStrategy =
                     new RightMoveStrategy(random.nextInt(800), random.nextInt(600), random.nextInt(50), false);
@@ -85,7 +87,7 @@ public class ObjectsGame extends BasicGame {
     }
 
     @Override
-    public void update(GameContainer gameContainer, int delta) {
+    public void update(GameContainer gameContainer, int delta) throws SlickException {
         for (Actor actor : this.actors) {
             actor.update(gameContainer, delta);
         }

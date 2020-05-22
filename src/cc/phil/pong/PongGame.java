@@ -49,7 +49,7 @@ public class PongGame extends BasicGame {
     }
 
     @Override
-    public void update(GameContainer gameContainer, int delta) {
+    public void update(GameContainer gameContainer, int delta) throws SlickException {
         for (Actor actor : this.actors) {
             actor.update(gameContainer, delta);
         }
@@ -74,7 +74,7 @@ public class PongGame extends BasicGame {
         printScore = this.ball.scorePlayer + " : " + this.ball.scoreComputer;
         fontShowScore.drawString(725, 10, printScore, Color.magenta);
 
-        if (this.hasWinner) {
+        if (this.hasWinner){
             fontShowWinner.drawString(300, 300, printWinner, Color.magenta);
         }
 
