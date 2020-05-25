@@ -1,6 +1,7 @@
 package cc.phil.patternSnake;
 
 import cc.phil.firstgame.actors.Actor;
+import cc.phil.firstgame.actors.CollisionActor;
 import cc.phil.snake.Direction;
 import org.newdawn.slick.*;
 
@@ -14,6 +15,7 @@ public class SnakeGame extends BasicGame {
     private int clock = 250;
     private Direction direction;
     private int elapsedTime;
+    private List<CollisionActor> collisionActors;
 
     public SnakeGame(String title) {
         super(title);
@@ -97,6 +99,11 @@ public class SnakeGame extends BasicGame {
 
             this.tip = temp;
 
+            /*
+            if (this.getShape().intersects(collisionActor.getShape())) {
+                setNewRandomPosition();
+                SnakeMainGame.setScore(10);
+            }*/
         }
     }
 

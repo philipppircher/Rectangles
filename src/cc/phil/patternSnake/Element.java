@@ -1,8 +1,10 @@
 package cc.phil.patternSnake;
 
 import cc.phil.firstgame.actors.Actor;
+import cc.phil.firstgame.actors.CollisionActor;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.geom.Shape;
 
 public class Element implements Actor {
     private int x,y;
@@ -16,7 +18,7 @@ public class Element implements Actor {
     @Override
     public void render(Graphics graphics) {
         graphics.fillOval(this.x * SnakeGame.GRID_SIZE, this.y * SnakeGame.GRID_SIZE,
-                SnakeGame.GRID_SIZE - 1, SnakeGame.GRID_SIZE - 1);
+                SnakeGame.GRID_SIZE - 1, SnakeGame.GRID_SIZE - 2);
     }
 
     @Override
