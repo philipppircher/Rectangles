@@ -11,6 +11,12 @@ public class Person {
         this.city = city;
     }
 
+    public Person(String firstAndLastName){
+        String[] txt = firstAndLastName.split(" ");     // Split at space character
+        firstName = txt[0];                       // Philipp
+        lastName = txt[1];                        // Pircher
+    }
+
     public String getFirstName() {
         return firstName;
     }
