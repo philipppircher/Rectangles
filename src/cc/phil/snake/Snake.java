@@ -39,12 +39,7 @@ public class Snake implements Actor {
     // Methodes
     //
     @Override
-    public void render(Graphics graphics) {
-        // Here draw Elements
-        for (Element element : elements) {
-            element.render(graphics);
-        }
-    }
+    public void render(Graphics graphics) {}
 
     @Override
     public void update(GameContainer gameContainer, int delta) {

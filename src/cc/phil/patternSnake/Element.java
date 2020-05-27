@@ -1,10 +1,8 @@
 package cc.phil.patternSnake;
 
 import cc.phil.firstgame.actors.Actor;
-import cc.phil.firstgame.actors.CollisionActor;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.geom.Shape;
 
 public class Element implements Actor {
     private int x,y;
