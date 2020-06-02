@@ -8,14 +8,14 @@ public class Department {
     //
     private String name;
     private List<Person> employees;
-    private ArrayList<Department> childDepartments;
+    private ArrayList<Department> subDivisionDepartments;
 
     // Constructor
     //
     public Department(String name) {
         this.name = name;
         this.employees = new ArrayList<>();
-        this.childDepartments = new ArrayList<>();
+        this.subDivisionDepartments = new ArrayList<>();
     }
 
     public Department(Person employee){
@@ -24,17 +24,21 @@ public class Department {
 
     // Methodes
     //
-    public void recruiteEmployee(Person employee){
+    public void addEmployee(Person employee){
         employees.add(employee);
     }
 
     // Getter/Setter
     //
     public void addChildDepartment(Department department){
-        this.childDepartments.add(department);
+        this.subDivisionDepartments.add(department);
     }
 
     public String getName() {
         return name;
+    }
+
+    public ArrayList<Department> getSubDivisionDepartments() {
+        return subDivisionDepartments;
     }
 }

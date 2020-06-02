@@ -16,12 +16,13 @@ public class DepartmentMain {
             while ((line = bufferedReader.readLine()) != null) {
 
                 String[] lineArray = line.split(";");
-                // First create departments with names
+                // First, create departments with names
                 company.addDepartment(lineArray[1]);
-                // Person names
-                Person employee = new Person(lineArray[0]);
-                // Send employee to correct Department per Department name
-                //company.checkDepartmentAndAddEmployee(lineArray[1], employee);
+                // Second, send employees to correct Department per Department name
+                company.checkDepartmentAndAddEmployee(lineArray[1],new Person(lineArray[0]));
+                // Third, addchildDepartments to parent Departments
+                company.setDepartmentSubdivision(lineArray[1], lineArray[2]);
+
             }
         } catch (
                 FileNotFoundException ex) {
