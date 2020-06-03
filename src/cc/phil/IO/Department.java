@@ -8,37 +8,48 @@ public class Department {
     //
     private String name;
     private List<Person> employees;
-    private ArrayList<Department> subDivisionDepartments;
+    private ArrayList<Department> subDepartments;
 
     // Constructor
     //
     public Department(String name) {
         this.name = name;
         this.employees = new ArrayList<>();
-        this.subDivisionDepartments = new ArrayList<>();
+        this.subDepartments = new ArrayList<>();
     }
 
-    public Department(Person employee){
+    public Department(Person employee) {
         this.employees.add(employee);
     }
 
     // Methodes
     //
-    public void addEmployee(Person employee){
+    public void addEmployee(Person employee) {
         employees.add(employee);
     }
 
     // Getter/Setter
     //
-    public void addChildDepartment(Department department){
-        this.subDivisionDepartments.add(department);
+    public void addSubDepartment(Department department) {
+        this.subDepartments.add(department);
+    }
+
+    public boolean isSubDepartmentExist(String dep) {
+        if (subDepartments.size() > 0) {
+            for (Department department : subDepartments) {
+                if (department.getName().equalsIgnoreCase(dep)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public String getName() {
         return name;
     }
 
-    public ArrayList<Department> getSubDivisionDepartments() {
-        return subDivisionDepartments;
+    public ArrayList<Department> getSubDepartments() {
+        return subDepartments;
     }
 }

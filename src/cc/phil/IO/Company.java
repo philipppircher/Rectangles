@@ -30,44 +30,29 @@ public class Company {
         departments.add(new Department(nameOfNewDepartment));
     }
 
-    public void setDepartmentSubdivision(String subDivisionName, String divisionName) {
-        String subName = "";
-        String divName = "";
-        Department subDepartment = null;
-
-        for (int i = 0; i < departments.size(); i++) {
-            subName = departments.get(i).getName();
-
-            if (subName.contains(subDivisionName)) {
-                subDepartment = departments.get(i);
-                break;
-            }
-        }
-
-
-        for (int i = 0; i < departments.size(); i++) {
-            divName = departments.get(i).getName();
-            Department division = departments.get(i);
-
-            if (divName.contains(divisionName) && !checkDepartmentHasSubdivision(division, subDepartment.getName())) {
-                // Here is bug, fix it (Einkauf Europa, Einkauf Europa add as Child to parent)
-
-                departments.get(i).addChildDepartment(subDepartment);
-                return;
+    public void setDepartmentSubdivision(String subDepartmentName, String departmentName) {
+        for (Department department : departments) {
+            // Test method here ..
+            for (Department subDepartment : departments) {
+                if (department.getName().equalsIgnoreCase(departmentName) &&
+                        subDepartment.getName().equalsIgnoreCase(subDepartmentName)) {
+                    if (!department.isSubDepartmentExist(subDepartmentName))
+                        department.addSubDepartment(subDepartment);
+                }
             }
         }
     }
 
-    public boolean checkDepartmentHasSubdivision(Department department, String subDivisionName) {
-        boolean hasSubdivision = false;
+    private boolean checkDepartmentHasSubdivision(Department department, String subDepartmentName) {
+        boolean hasSubDepartment = false;
 
-        for (Department sub : department.getSubDivisionDepartments()) {
-            if (sub.getName().contains(subDivisionName)) {
-                hasSubdivision = true;
+        for (Department sub : department.getSubDepartments()) {
+            if (sub.getName().contains(subDepartmentName)) {
+                hasSubDepartment = true;
                 break;
             }
         }
-        return hasSubdivision;
+        return hasSubDepartment;
     }
 
     public void checkDepartmentAndAddEmployee(String nameOfDepartment, Person newEmployee) {

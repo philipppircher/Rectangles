@@ -22,7 +22,6 @@ public class DepartmentMain {
                 company.checkDepartmentAndAddEmployee(lineArray[1],new Person(lineArray[0]));
                 // Third, addchildDepartments to parent Departments
                 company.setDepartmentSubdivision(lineArray[1], lineArray[2]);
-
             }
         } catch (
                 FileNotFoundException ex) {
