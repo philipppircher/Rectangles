@@ -32,12 +32,16 @@ public class Company {
 
     public void setDepartmentSubdivision(String subDepartmentName, String departmentName) {
         for (Department department : departments) {
-            // Test method here ..
+
             for (Department subDepartment : departments) {
+
                 if (department.getName().equalsIgnoreCase(departmentName) &&
                         subDepartment.getName().equalsIgnoreCase(subDepartmentName)) {
-                    if (!department.isSubDepartmentExist(subDepartmentName))
+
+                    if (!department.isSubDepartmentExist(subDepartmentName)) {
                         department.addSubDepartment(subDepartment);
+                    }
+                    return;     // if isSubDepartemntExist true|false -> quit Method immediately
                 }
             }
         }

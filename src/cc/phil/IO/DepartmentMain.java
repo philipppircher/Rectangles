@@ -19,7 +19,7 @@ public class DepartmentMain {
                 // First, create departments with names
                 company.addDepartment(lineArray[1]);
                 // Second, send employees to correct Department per Department name
-                company.checkDepartmentAndAddEmployee(lineArray[1],new Person(lineArray[0]));
+                company.checkDepartmentAndAddEmployee(lineArray[1], new Person(lineArray[0]));
                 // Third, addchildDepartments to parent Departments
                 company.setDepartmentSubdivision(lineArray[1], lineArray[2]);
             }
